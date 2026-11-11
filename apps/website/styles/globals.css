@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'GeistSans';
+  src: url('/fonts/Geist_Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: local('GeistSans'), url('/fonts/Geist_Variable.woff2') format('woff2');
+  font-weight: 100 900;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: local('GeistMono'), url('/fonts/GeistMono_Variable.woff2') format('woff2');
+  font-weight: 100 900;
+}
+
+:root {
+  color-scheme: dark;
+  --ds-gray-700: #333333;
+  --ds-gray-800: #222222;
+  --ds-gray-1000: #ffffff;
+  --ds-gray-100: #ededed;
+  --ds-gray-400: #888888;
+  --ds-gray-alpha-300: rgba(255, 255, 255, 0.15);
+  --ds-gray-alpha-500: rgba(255, 255, 255, 0.3);
+  --ds-gray-alpha-600: rgba(255, 255, 255, 0.4);
+  --remote-cache-inner-start: #0196FF;
+  --remote-cache-inner-end: #FF1E56;
+  --remote-cache-tick-color: rgba(255, 255, 255, 0.4);
+}
+
+body {
+  background-color: #000000;
+  color: #ededed;
+  font-family: 'GeistSans', 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #00f0ff;
+  color: #000000;
+}
+
+/* Ambient background grid */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Interactive Mouse Spotlight Card */
+.spotlight-card {
+  position: relative;
+  background: rgba(12, 12, 14, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(500px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(0, 240, 255, 0.12), transparent 45%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.spotlight-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px -10px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(0, 240, 255, 0.08);
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+.spotlight-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Speedometer Interactive Hover & 180-Degree Synchronized Color Sweep */
+.speedometer-container {
+  cursor: pointer;
+}
+
+.speedometer-container #needleGroup {
+  transform-origin: 240px 240px;
+  transform: rotate(0deg);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.speedometer-container:hover #needleGroup {
+  transform: rotate(36deg);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 3px;
+}
