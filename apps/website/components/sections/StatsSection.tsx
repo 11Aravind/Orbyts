@@ -115,8 +115,8 @@ export default function StatsSection() {
                 12+
               </span>
             </dt>
-            <dd className="text-[16px] leading-[24px] text-[#ededed] mt-2 sm:whitespace-nowrap font-normal">
-              Years in Business<span className="hidden lg:inline text-[#888888]"> of continuous engineering</span>
+            <dd className="text-[16px] leading-[24px] text-neutral-700 dark:text-[#ededed] mt-2 sm:whitespace-nowrap font-normal">
+              Years in Business<span className="hidden lg:inline text-neutral-400 dark:text-[#888888]"> of continuous engineering</span>
             </dd>
           </div>
 
@@ -126,7 +126,7 @@ export default function StatsSection() {
             title="Click to replay count animation"
             onClick={runStatsAnimation}
           >
-            <dt className="text-[32px] sm:text-[40px] lg:text-[64px] font-[450] tracking-[-0.02em] leading-none text-[#ededed]">
+            <dt className="text-[32px] sm:text-[40px] lg:text-[64px] font-[450] tracking-[-0.02em] leading-none text-neutral-900 dark:text-[#ededed]">
               <span
                 ref={(node) => {
                   counterRefs.current['stat-companies'] = node;
@@ -136,7 +136,7 @@ export default function StatsSection() {
                 100+
               </span>
             </dt>
-            <dd className="text-[16px] leading-[24px] text-[#ededed] mt-2 sm:whitespace-nowrap font-normal">
+            <dd className="text-[16px] leading-[24px] text-neutral-700 dark:text-[#ededed] mt-2 sm:whitespace-nowrap font-normal">
               Companies empowered
             </dd>
           </div>
@@ -147,7 +147,7 @@ export default function StatsSection() {
             title="Click to replay count animation"
             onClick={runStatsAnimation}
           >
-            <dt className="text-[32px] sm:text-[40px] lg:text-[64px] font-[450] tracking-[-0.02em] leading-none text-[#ededed]">
+            <dt className="text-[32px] sm:text-[40px] lg:text-[64px] font-[450] tracking-[-0.02em] leading-none text-neutral-900 dark:text-[#ededed]">
               <span
                 ref={(node) => {
                   counterRefs.current['stat-customers'] = node;
@@ -157,7 +157,7 @@ export default function StatsSection() {
                 500+
               </span>
             </dt>
-            <dd className="text-[16px] leading-[24px] text-[#ededed] mt-2 sm:whitespace-nowrap font-normal">
+            <dd className="text-[16px] leading-[24px] text-neutral-700 dark:text-[#ededed] mt-2 sm:whitespace-nowrap font-normal">
               Happy customers
             </dd>
           </div>
@@ -168,7 +168,7 @@ export default function StatsSection() {
             title="Click to replay count animation"
             onClick={runStatsAnimation}
           >
-            <dt className="text-[32px] sm:text-[40px] lg:text-[64px] font-[450] tracking-[-0.02em] leading-none text-[#ededed]">
+            <dt className="text-[32px] sm:text-[40px] lg:text-[64px] font-[450] tracking-[-0.02em] leading-none text-neutral-900 dark:text-[#ededed]">
               <span
                 ref={(node) => {
                   counterRefs.current['stat-satisfaction'] = node;
@@ -178,7 +178,7 @@ export default function StatsSection() {
                 99.8%
               </span>
             </dt>
-            <dd className="text-[16px] leading-[24px] text-[#ededed] mt-2 sm:whitespace-nowrap font-normal">
+            <dd className="text-[16px] leading-[24px] text-neutral-700 dark:text-[#ededed] mt-2 sm:whitespace-nowrap font-normal">
               Satisfaction rate
             </dd>
           </div>

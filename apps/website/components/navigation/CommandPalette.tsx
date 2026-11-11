@@ -123,15 +123,15 @@ export default function CommandPalette({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/80 backdrop-blur-md transition-opacity"
+      className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/50 dark:bg-black/80 backdrop-blur-md transition-opacity"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-xl rounded-2xl bg-neutral-950 border border-white/20 shadow-2xl overflow-hidden font-mono text-xs"
+        className="relative w-full max-w-xl rounded-2xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-white/20 shadow-2xl overflow-hidden font-mono text-xs"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/10 bg-white/[0.02]">
-          <Search className="w-4 h-4 text-cyan-400 shrink-0" />
+        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-white/[0.02]">
+          <Search className="w-4 h-4 text-cyan-500 dark:text-cyan-400 shrink-0" />
           <input
             ref={inputRef}
             type="text"
@@ -141,11 +141,11 @@ export default function CommandPalette({
               setSelectedIndex(0);
             }}
             placeholder="Search navigation, products, services, or actions..."
-            className="w-full bg-transparent text-white placeholder-neutral-500 text-sm font-sans focus:outline-none"
+            className="w-full bg-transparent text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 text-sm font-sans focus:outline-none"
           />
           <kbd
             onClick={onClose}
-            className="px-2 py-0.5 rounded bg-white/10 text-neutral-400 hover:text-white cursor-pointer text-[10px]"
+            className="px-2 py-0.5 rounded bg-neutral-200 dark:bg-white/10 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white cursor-pointer text-[10px]"
           >
             ESC
           </kbd>
@@ -164,8 +164,8 @@ export default function CommandPalette({
                 onClick={onClose}
                 className={`flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors ${
                   idx === selectedIndex
-                    ? 'bg-white/[0.08] text-white'
-                    : 'text-neutral-300 hover:bg-white/[0.05] hover:text-white'
+                    ? 'bg-neutral-100 text-neutral-900 dark:bg-white/[0.08] dark:text-white font-medium'
+                    : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-white/[0.05] hover:text-neutral-950 dark:hover:text-white'
                 }`}
               >
                 <div className="flex items-center gap-3 font-sans">
@@ -183,7 +183,7 @@ export default function CommandPalette({
           )}
         </div>
 
-        <div className="px-4 py-2.5 border-t border-white/10 bg-white/[0.01] flex items-center justify-between text-[11px] text-neutral-500">
+        <div className="px-4 py-2.5 border-t border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-white/[0.01] flex items-center justify-between text-[11px] text-neutral-500">
           <span>Use &uarr; &darr; to navigate, Enter to select</span>
           <span className="font-mono">ORBYT Command</span>
         </div>

@@ -57,11 +57,11 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-12 lg:gap-8">
           {/* LEFT COLUMN: Heading, Subtitle, Tabs, Command Pill */}
           <div className="relative z-10 flex flex-col justify-center lg:col-span-7 lg:pr-8 space-y-6">
-            <h1 className="text-4xl sm:text-5xl lg:text-[52px] font-bold text-white tracking-[-0.035em] leading-[1.1] max-w-[720px] whitespace-normal">
+            <h1 className="text-4xl sm:text-5xl lg:text-[52px] font-bold text-neutral-900 dark:text-white tracking-[-0.035em] leading-[1.1] max-w-[720px] whitespace-normal">
               Build smarter, Go further
             </h1>
 
-            <p className="text-[16px] sm:text-[17px] text-neutral-400 font-normal leading-[1.6] max-w-[540px]">
+            <p className="text-[16px] sm:text-[17px] text-neutral-600 dark:text-neutral-400 font-normal leading-[1.6] max-w-[540px]">
               We build powerful software, modern digital experiences and intelligent solutions that help businesses move
               forward.
             </p>
@@ -72,37 +72,45 @@ export default function HeroSection() {
                 type="button"
                 onClick={() => setMode('software')}
                 className={`cursor-pointer px-2.5 py-1 rounded text-[13px] transition-colors ${
-                  mode === 'software' ? 'text-white font-medium' : 'text-neutral-500 hover:text-white font-normal'
+                  mode === 'software'
+                    ? 'text-neutral-900 dark:text-white font-medium'
+                    : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white font-normal'
                 }`}
               >
                 Software
               </button>
-              <span className="text-neutral-700 select-none">|</span>
+              <span className="text-neutral-300 dark:text-neutral-700 select-none">|</span>
               <button
                 type="button"
                 onClick={() => setMode('ai')}
                 className={`cursor-pointer px-2.5 py-1 rounded text-[13px] transition-colors ${
-                  mode === 'ai' ? 'text-white font-medium' : 'text-neutral-500 hover:text-white font-normal'
+                  mode === 'ai'
+                    ? 'text-neutral-900 dark:text-white font-medium'
+                    : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white font-normal'
                 }`}
               >
                 AI
               </button>
-              <span className="text-neutral-700 select-none">|</span>
+              <span className="text-neutral-300 dark:text-neutral-700 select-none">|</span>
               <button
                 type="button"
                 onClick={() => setMode('security')}
                 className={`cursor-pointer px-2.5 py-1 rounded text-[13px] transition-colors ${
-                  mode === 'security' ? 'text-white font-medium' : 'text-neutral-500 hover:text-white font-normal'
+                  mode === 'security'
+                    ? 'text-neutral-900 dark:text-white font-medium'
+                    : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white font-normal'
                 }`}
               >
                 Security
               </button>
-              <span className="text-neutral-700 select-none">|</span>
+              <span className="text-neutral-300 dark:text-neutral-700 select-none">|</span>
               <button
                 type="button"
                 onClick={() => setMode('development')}
                 className={`cursor-pointer px-2.5 py-1 rounded text-[13px] transition-colors ${
-                  mode === 'development' ? 'text-white font-medium' : 'text-neutral-500 hover:text-white font-normal'
+                  mode === 'development'
+                    ? 'text-neutral-900 dark:text-white font-medium'
+                    : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white font-normal'
                 }`}
               >
                 Development
@@ -113,19 +121,19 @@ export default function HeroSection() {
             <div className="pt-1">
               <div
                 onClick={handleCopy}
-                className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-neutral-800 bg-neutral-900/60 hover:border-neutral-700 transition-colors cursor-pointer"
+                className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900/60 hover:border-neutral-400 dark:hover:border-neutral-700 transition-colors cursor-pointer shadow-sm"
               >
                 <span className="text-neutral-500 font-mono text-xs select-none">$</span>
-                <span className="font-mono text-xs text-neutral-200 select-all">{commandText}</span>
+                <span className="font-mono text-xs text-neutral-800 dark:text-neutral-200 select-all">{commandText}</span>
                 {copied ? (
-                  <span className="text-emerald-400 font-mono text-[10px] px-1">copied!</span>
+                  <span className="text-emerald-500 dark:text-emerald-400 font-mono text-[10px] px-1 font-semibold">copied!</span>
                 ) : (
                   <svg
                     width="14"
                     height="14"
                     viewBox="0 0 16 16"
                     fill="currentColor"
-                    className="text-neutral-500 hover:text-white transition-colors"
+                    className="text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
                   >
                     <path
                       fillRule="evenodd"

@@ -30,14 +30,14 @@ export default function FaqSection() {
   ];
 
   return (
-    <section id="faq" className="py-24 border-t border-white/[0.08] relative">
+    <section id="faq" className="py-24 border-t border-neutral-200 dark:border-white/[0.08] relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-block text-xs font-mono uppercase tracking-widest text-cyan-400 mb-3">FAQ</div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+          <div className="inline-block text-xs font-mono uppercase tracking-widest text-cyan-600 dark:text-cyan-400 mb-3">FAQ</div>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white">
             Frequently asked questions.
           </h2>
-          <p className="mt-4 text-neutral-400 text-base">A few things you might be wondering about ORBYT.</p>
+          <p className="mt-4 text-neutral-600 dark:text-neutral-400 text-base">A few things you might be wondering about ORBYT.</p>
         </div>
 
         <div className="space-y-4">
@@ -50,15 +50,15 @@ export default function FaqSection() {
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
                   className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer"
                 >
-                  <span className="font-semibold text-white">{faq.q}</span>
+                  <span className="font-semibold text-neutral-900 dark:text-white">{faq.q}</span>
                   <ChevronDown
-                    className={`w-5 h-5 text-neutral-400 transition-transform duration-200 shrink-0 ${
-                      isOpen ? 'rotate-180 text-white' : ''
+                    className={`w-5 h-5 text-neutral-500 dark:text-neutral-400 transition-transform duration-200 shrink-0 ${
+                      isOpen ? 'rotate-180 text-neutral-900 dark:text-white' : ''
                     }`}
                   />
                 </button>
                 {isOpen && (
-                  <div className="px-6 pb-6 text-sm text-neutral-400 border-t border-white/[0.04] pt-4 leading-relaxed">
+                  <div className="px-6 pb-6 text-sm text-neutral-600 dark:text-neutral-400 border-t border-neutral-200/80 dark:border-white/[0.04] pt-4 leading-relaxed">
                     {faq.a}
                   </div>
                 )}

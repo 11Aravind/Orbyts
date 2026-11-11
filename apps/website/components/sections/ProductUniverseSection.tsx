@@ -11,19 +11,19 @@ export default function ProductUniverseSection() {
   return (
     <>
       {/* SECTION 4: THE PRODUCT UNIVERSE (Bento Grid) */}
-      <section id="products" className="py-24 border-t border-white/[0.08] relative">
+      <section id="products" className="py-24 border-t border-neutral-200 dark:border-white/[0.08] relative">
         <div className="max-w-[1448px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div className="max-w-2xl">
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white">
                 Useful tools. Thoughtfully built.
               </h2>
-              <p className="mt-4 text-neutral-400 text-base sm:text-lg">
+              <p className="mt-4 text-neutral-600 dark:text-neutral-400 text-base sm:text-lg">
                 Explore ORBYT&apos;s software products, built to simplify work and solve real business challenges.
               </p>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-xs font-mono px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-neutral-400">
+              <span className="text-xs font-mono px-3 py-1.5 rounded-full bg-neutral-100 dark:bg-white/[0.03] border border-neutral-200 dark:border-white/10 text-neutral-600 dark:text-neutral-400">
                 Concept Previews Active
               </span>
             </div>
@@ -34,7 +34,7 @@ export default function ProductUniverseSection() {
             <li className="flex w-full flex-col gap-5">
               <Link
                 href="/products/inbyte"
-                className="aspect-[40/27] overflow-hidden rounded-xl border border-white/[0.08] bg-neutral-950/80 hover:border-white/20 transition-all relative group flex items-center justify-center block"
+                className="aspect-[40/27] overflow-hidden rounded-xl border border-neutral-200 dark:border-white/[0.08] bg-neutral-100 dark:bg-neutral-950/80 hover:border-neutral-300 dark:hover:border-white/20 transition-all relative group flex items-center justify-center block shadow-sm"
               >
                 <Image
                   src="/images/dine-preview.jpg"
@@ -46,14 +46,14 @@ export default function ProductUniverseSection() {
               </Link>
               <div className="flex flex-col gap-2">
                 <div className="flex items-center justify-between">
-                  <Link href="/products/inbyte" className="font-semibold text-white text-base hover:text-cyan-400 transition-colors">
+                  <Link href="/products/inbyte" className="font-semibold text-neutral-900 dark:text-white text-base hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">
                     Innbite (InByte)
                   </Link>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-white/[0.04] border border-white/10 text-neutral-400">
+                  <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/10 text-neutral-600 dark:text-neutral-400">
                     QR Dining
                   </span>
                 </div>
-                <p className="text-balance text-sm text-neutral-400">
+                <p className="text-balance text-sm text-neutral-600 dark:text-neutral-400">
                   Scan QR codes to browse live menus and order food instantly right from your table.
                 </p>
               </div>
@@ -69,16 +69,16 @@ export default function ProductUniverseSection() {
                 })
               }
             >
-              <div className="aspect-[40/27] overflow-hidden rounded-xl border border-white/[0.08] bg-neutral-950/80 hover:border-white/20 transition-all flex items-center justify-center px-6">
+              <div className="aspect-[40/27] overflow-hidden rounded-xl border border-neutral-200 dark:border-white/[0.08] bg-neutral-100 dark:bg-neutral-950/80 hover:border-neutral-300 dark:hover:border-white/20 transition-all flex items-center justify-center px-6 shadow-sm">
                 <div aria-hidden="true" className="flex size-full items-center justify-center bg-transparent px-6">
                   <div className="flex flex-col gap-2 font-mono text-sm leading-6 tracking-tight">
-                    <p className="text-neutral-400">
-                      <span className="text-emerald-400 font-medium">1,480 orders</span>, 100% fulfilled
+                    <p className="text-neutral-600 dark:text-neutral-400">
+                      <span className="text-emerald-600 dark:text-emerald-400 font-medium">1,480 orders</span>, 100% fulfilled
                     </p>
-                    <p className="text-neutral-400">
-                      <span className="font-bold text-white">$142,850 GMV</span>, instant payout
+                    <p className="text-neutral-600 dark:text-neutral-400">
+                      <span className="font-bold text-neutral-900 dark:text-white">$142,850 GMV</span>, instant payout
                     </p>
-                    <p className="text-neutral-400">
+                    <p className="text-neutral-600 dark:text-neutral-400">
                       0.24s{' '}
                       <span className="bg-gradient-to-r from-[#0096FF] to-[#FF1E56] bg-clip-text text-transparent">
                         &gt;&gt;&gt; HIGH CONVERSION
@@ -89,12 +89,12 @@ export default function ProductUniverseSection() {
               </div>
               <div className="flex flex-col gap-2">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-white text-base">Orbyt Commerce</h3>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-white/[0.04] border border-white/10 text-neutral-400">
+                  <h3 className="font-semibold text-neutral-900 dark:text-white text-base">Orbyt Commerce</h3>
+                  <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/10 text-neutral-600 dark:text-neutral-400">
                     Storefront
                   </span>
                 </div>
-                <p className="text-balance text-sm text-neutral-400">
+                <p className="text-balance text-sm text-neutral-600 dark:text-neutral-400">
                   A flexible online storefront foundation for modern brands ready to sell and scale with confidence.
                 </p>
               </div>
@@ -110,7 +110,7 @@ export default function ProductUniverseSection() {
                 })
               }
             >
-              <div className="aspect-[40/27] overflow-hidden rounded-xl border border-white/[0.08] bg-neutral-950/80 hover:border-white/20 transition-all flex items-center justify-center px-4">
+              <div className="aspect-[40/27] overflow-hidden rounded-xl border border-neutral-200 dark:border-white/[0.08] bg-neutral-100 dark:bg-neutral-950/80 hover:border-neutral-300 dark:hover:border-white/20 transition-all flex items-center justify-center px-4 shadow-sm">
                 <div aria-hidden="true" className="flex size-full items-center justify-center bg-transparent px-4">
                   <div className="w-full max-w-[280px] overflow-hidden rounded-2xl bg-neutral-900 shadow-2xl border border-white/10">
                     <div className="border-white/10 border-b px-4 py-3 text-neutral-300 font-mono text-xs flex items-center justify-between">
@@ -145,12 +145,12 @@ export default function ProductUniverseSection() {
               </div>
               <div className="flex flex-col gap-2">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-white text-base">Orbyt Stock</h3>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-white/[0.04] border border-white/10 text-neutral-400">
+                  <h3 className="font-semibold text-neutral-900 dark:text-white text-base">Orbyt Stock</h3>
+                  <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/10 text-neutral-600 dark:text-neutral-400">
                     Inventory
                   </span>
                 </div>
-                <p className="text-balance text-sm text-neutral-400">
+                <p className="text-balance text-sm text-neutral-600 dark:text-neutral-400">
                   Bring catalog items, real-time stock movements, and multi-location inventory into one clear workspace.
                 </p>
               </div>
@@ -166,33 +166,33 @@ export default function ProductUniverseSection() {
           onClick={() => setModalData(null)}
         >
           <div
-            className="spotlight-card max-w-lg w-full p-6 sm:p-8 relative bg-neutral-950 border border-white/20"
+            className="spotlight-card max-w-lg w-full p-6 sm:p-8 relative bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-white/20 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setModalData(null)}
-              className="absolute top-5 right-5 text-neutral-400 hover:text-white transition-colors cursor-pointer"
+              className="absolute top-5 right-5 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
-            <div className="inline-block px-2.5 py-1 rounded text-xs font-mono bg-cyan-950/60 border border-cyan-800/40 text-cyan-300 mb-3">
+            <div className="inline-block px-2.5 py-1 rounded text-xs font-mono bg-cyan-100 dark:bg-cyan-950/60 border border-cyan-300 dark:border-cyan-800/40 text-cyan-800 dark:text-cyan-300 mb-3">
               Ecosystem Specification
             </div>
-            <h3 className="text-2xl font-bold text-white mb-3">{modalData.title}</h3>
-            <p className="text-sm text-neutral-300 leading-relaxed mb-6">{modalData.desc}</p>
+            <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-3">{modalData.title}</h3>
+            <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-6">{modalData.desc}</p>
 
-            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 space-y-2 mb-6 text-xs font-mono text-neutral-400">
+            <div className="p-4 rounded-xl bg-neutral-50 dark:bg-white/[0.02] border border-neutral-200 dark:border-white/5 space-y-2 mb-6 text-xs font-mono text-neutral-500 dark:text-neutral-400">
               <div className="flex justify-between">
                 <span>Deployment:</span>
-                <span className="text-white">High-Availability Cloud</span>
+                <span className="text-neutral-900 dark:text-white font-medium">High-Availability Cloud</span>
               </div>
               <div className="flex justify-between">
                 <span>Security Standard:</span>
-                <span className="text-emerald-400">SOC2 Type II Ready</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-medium">SOC2 Type II Ready</span>
               </div>
               <div className="flex justify-between">
                 <span>Early Access:</span>
-                <span className="text-cyan-400">Open for Beta Partners</span>
+                <span className="text-cyan-600 dark:text-cyan-400 font-medium">Open for Beta Partners</span>
               </div>
             </div>
 
@@ -200,13 +200,13 @@ export default function ProductUniverseSection() {
               <Link
                 href="/#contact"
                 onClick={() => setModalData(null)}
-                className="flex-1 py-3 text-center rounded-xl bg-white text-black font-semibold text-xs hover:bg-neutral-200 transition-colors"
+                className="flex-1 py-3 text-center rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-black font-semibold text-xs hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors"
               >
                 Request Early Access
               </Link>
               <button
                 onClick={() => setModalData(null)}
-                className="px-5 py-3 rounded-xl border border-white/10 text-white font-semibold text-xs hover:bg-white/5 transition-colors cursor-pointer"
+                className="px-5 py-3 rounded-xl border border-neutral-300 dark:border-white/10 text-neutral-700 dark:text-white font-semibold text-xs hover:bg-neutral-100 dark:hover:bg-white/5 transition-colors cursor-pointer"
               >
                 Close
               </button>

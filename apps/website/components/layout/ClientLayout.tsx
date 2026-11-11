@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import CommandPalette from '../navigation/CommandPalette';
+import { ThemeProvider } from '../../context/ThemeContext';
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const [paletteOpen, setPaletteOpen] = useState(false);
@@ -31,14 +32,16 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   }, []);
 
   return (
-    <div className="min-h-screen relative bg-black text-neutral-200 antialiased selection:bg-cyan-500 selection:text-black">
-      {/* Ambient Top Subtle Background Grid present across all pages */}
-      <div className="fixed inset-0 bg-grid-pattern pointer-events-none opacity-30 z-0" />
+    <ThemeProvider>
+      <div className="min-h-screen relative bg-white dark:bg-black text-neutral-800 dark:text-neutral-200 antialiased selection:bg-cyan-500 selection:text-white dark:selection:text-black transition-colors duration-200">
+        {/* Ambient Top Subtle Background Grid present across all pages */}
+        <div className="fixed inset-0 bg-grid-pattern pointer-events-none opacity-40 dark:opacity-30 z-0" />
 
-      <Navbar onOpenPalette={() => setPaletteOpen(true)} />
-      <main className="relative z-10">{children}</main>
-      <Footer />
-      <CommandPalette isOpen={paletteOpen} onClose={() => setPaletteOpen(false)} />
-    </div>
+        <Navbar onOpenPalette={() => setPaletteOpen(true)} />
+        <main className="relative z-10">{children}</main>
+        <Footer />
+        <CommandPalette isOpen={paletteOpen} onClose={() => setPaletteOpen(false)} />
+      </div>
+    </ThemeProvider>
   );
 }

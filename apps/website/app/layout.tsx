@@ -18,8 +18,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <body className="bg-black text-white min-h-screen antialiased selection:bg-cyan-500/30 selection:text-white">
+    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('orbyt-theme');if(t==='light'){document.documentElement.classList.remove('dark');document.documentElement.classList.add('light');}else{document.documentElement.classList.add('dark');}}catch(e){}})();`,
+          }}
+        />
+      </head>
+      <body className="bg-white dark:bg-black text-neutral-900 dark:text-white min-h-screen antialiased selection:bg-cyan-500/30 selection:text-black dark:selection:text-white transition-colors duration-200">
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

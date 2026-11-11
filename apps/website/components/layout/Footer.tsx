@@ -4,9 +4,9 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.08] bg-black relative z-10 pt-16 pb-12">
+    <footer className="border-t border-neutral-200 dark:border-white/[0.08] bg-neutral-50 dark:bg-black relative z-10 pt-16 pb-12 transition-colors">
       <div className="max-w-[1448px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 pb-12 border-b border-white/[0.08]">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 pb-12 border-b border-neutral-200 dark:border-white/[0.08]">
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
               <Image
@@ -16,38 +16,38 @@ export default function Footer() {
                 height={28}
                 className="h-7 w-auto object-contain"
               />
-              <span className="font-bold text-xl tracking-tight text-white">ORBYT</span>
+              <span className="font-bold text-xl tracking-tight text-neutral-900 dark:text-white">ORBYT</span>
             </div>
-            <p className="text-xs text-neutral-400 leading-relaxed max-w-sm">
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-sm">
               Software products, digital security, and thoughtful technology solutions for modern businesses ready to
               move forward.
             </p>
-            <div className="flex items-center gap-2 text-xs font-mono text-emerald-400">
-              <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <div className="flex items-center gap-2 text-xs font-mono text-emerald-600 dark:text-emerald-400">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
               <span>All systems operational</span>
             </div>
           </div>
 
           <div className="space-y-3">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-white">Products</h4>
-            <ul className="space-y-2 text-xs text-neutral-400">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-neutral-900 dark:text-white">Products</h4>
+            <ul className="space-y-2 text-xs text-neutral-600 dark:text-neutral-400">
               <li>
-                <Link href="/products/inbyte" className="hover:text-white transition-colors">
+                <Link href="/products/inbyte" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Orbyt Dine (InByte)
                 </Link>
               </li>
               <li>
-                <Link href="/#products" className="hover:text-white transition-colors">
+                <Link href="/#products" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Orbyt Commerce
                 </Link>
               </li>
               <li>
-                <Link href="/#products" className="hover:text-white transition-colors">
+                <Link href="/#products" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Orbyt Stock
                 </Link>
               </li>
               <li>
-                <Link href="/#products" className="hover:text-white transition-colors">
+                <Link href="/#products" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Orbyt Flow
                 </Link>
               </li>
@@ -55,25 +55,25 @@ export default function Footer() {
           </div>
 
           <div className="space-y-3">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-white">Services</h4>
-            <ul className="space-y-2 text-xs text-neutral-400">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-neutral-900 dark:text-white">Services</h4>
+            <ul className="space-y-2 text-xs text-neutral-600 dark:text-neutral-400">
               <li>
-                <Link href="/security" className="hover:text-white transition-colors">
+                <Link href="/security" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Security Assessment
                 </Link>
               </li>
               <li>
-                <Link href="/security" className="hover:text-white transition-colors">
+                <Link href="/security" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Application Hardening
                 </Link>
               </li>
               <li>
-                <Link href="/#development" className="hover:text-white transition-colors">
+                <Link href="/#development" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Custom Web Apps
                 </Link>
               </li>
               <li>
-                <Link href="/#development" className="hover:text-white transition-colors">
+                <Link href="/#development" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Cloud &amp; API Services
                 </Link>
               </li>
@@ -81,25 +81,25 @@ export default function Footer() {
           </div>
 
           <div className="space-y-3">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-white">Company</h4>
-            <ul className="space-y-2 text-xs text-neutral-400">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-neutral-900 dark:text-white">Company</h4>
+            <ul className="space-y-2 text-xs text-neutral-600 dark:text-neutral-400">
               <li>
-                <Link href="/#about" className="hover:text-white transition-colors">
+                <Link href="/#about" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   About ORBYT
                 </Link>
               </li>
               <li>
-                <Link href="/#testimonials" className="hover:text-white transition-colors">
+                <Link href="/#testimonials" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Showcase
                 </Link>
               </li>
               <li>
-                <Link href="/#faq" className="hover:text-white transition-colors">
+                <Link href="/#faq" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link href="/#contact" className="hover:text-white transition-colors">
+                <Link href="/#contact" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Contact
                 </Link>
               </li>
