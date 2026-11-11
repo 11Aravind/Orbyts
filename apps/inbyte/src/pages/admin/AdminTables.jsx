@@ -1,0 +1,342 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { toast } from 'react-hot-toast';
+import { QRCodeSVG } from 'qrcode.react';
+import { apiService } from '../../utils/apiService';
+import { AdminSkeletonCards } from '../../components/AdminSkeletonTable';
+import ConfirmDeleteModal from '../../components/ConfirmDeleteModal';
+import { Plus, Printer, Trash2, Sparkles, ShieldOff, CheckCircle, ExternalLink, Copy, Check } from 'lucide-react';
+
+export default function AdminTables() {
+    const [tables, setTables] = useState([]);
+    const [settings, setSettings] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [newTableNum, setNewTableNum] = useState('');
+    const [copiedKey, setCopiedKey] = useState(null);
+    const copyTimeoutRef = useRef(null);
+
+    const handleCopyLink = async (url, key) => {
+        try {
+            if (navigator.clipboard?.writeText) {
+                await navigator.clipboard.writeText(url);
+            } else {
+                const textarea = document.createElement('textarea');
+                textarea.value = url;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            }
+            setCopiedKey(key);
+            toast.success('Table QR link copied!');
+            if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
+            copyTimeoutRef.current = setTimeout(() => setCopiedKey(null), 2000);
+        } catch (err) {
+            console.error('Copy link error:', err);
+            toast.error('Failed to copy link.');
+        }
+    };
+
+    const loadData = async (showSkeleton = true) => {
+        if (showSkeleton) setLoading(true);
+        try {
+            const [tablesData, settingsData] = await Promise.all([
+                apiService.getTables(),
+                apiService.getRestaurantSettings()
+            ]);
+            setTables(tablesData || []);
+            setSettings(settingsData);
+        } catch (err) {
+            console.error('Load tables error:', err);
+            toast.error('Failed to load tables.');
+        } finally {
+            if (showSkeleton) setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        loadData(true);
+        const unsubscribe = apiService.subscribeStoreUpdates(({ entity }) => {
+            if (!entity || entity === 'all' || entity === 'tables' || entity === 'restaurant_settings') {
+                loadData(false);
+            }
+        });
+        return () => {
+            unsubscribe();
+            if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
+        };
+    }, []);
+
+    const handleCreateTable = async (e) => {
+        e.preventDefault();
+        if (!newTableNum) return;
+        try {
+            await apiService.createTable(newTableNum);
+            toast.success(`Table #${newTableNum} created successfully!`);
+            setNewTableNum('');
+            loadData(false);
+        } catch (err) {
+            console.error('Create table error:', err);
+            toast.error(err.message?.includes('unique') || err.message?.includes('duplicate') ? `Table #${newTableNum} already exists.` : 'Failed to create table.');
+        }
+    };
+
+    const handleToggleRevoked = async (tableId) => {
+        try {
+            await apiService.toggleTableRevoked(tableId);
+            toast.success('Table QR status updated.');
+            loadData(false);
+        } catch (err) {
+            console.error('Toggle table revocation error:', err);
+            toast.error('Failed to update table status.');
+        }
+    };
+
+    // Delete Modal State
+    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+    const [tableToDelete, setTableToDelete] = useState(null);
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    const handleDeleteTableClick = (table) => {
+        setTableToDelete(table);
+        setDeleteModalOpen(true);
+    };
+
+    const handleConfirmDeleteTable = async () => {
+        if (!tableToDelete) return;
+        setIsDeleting(true);
+        try {
+            await apiService.deleteTable(tableToDelete.id);
+            toast.success(`Table #${tableToDelete.table_number} deleted successfully!`);
+            setDeleteModalOpen(false);
+            setTableToDelete(null);
+            loadData(false);
+        } catch (err) {
+            console.error('Delete table error:', err);
+            toast.error('Failed to delete table assignment. Please try again.');
+        } finally {
+            setIsDeleting(false);
+        }
+    };
+
+    const handlePrint = () => {
+        window.print();
+    };
+
+    const baseUrl = window.location.origin;
+    const isSelfService = settings?.service_mode === 'SELF_SERVICE';
+
+    return (
+        <div className="space-y-6 text-slate-900 font-sans">
+            {/* Header */}
+            <div className="flex flex-wrap justify-between items-center gap-4 pb-4 border-b border-slate-200 print:hidden">
+                <div>
+                    <div className="flex items-center gap-2">
+                        <h1 className="text-2xl font-black text-slate-900 tracking-tight">
+                            QR Code Management
+                        </h1>
+                        <span className={`text-xs font-bold px-2.5 py-1 rounded-full border ${isSelfService ? 'bg-amber-100 text-amber-800 border-amber-200' : 'bg-indigo-100 text-indigo-800 border-indigo-200'}`}>
+                            {isSelfService ? 'SELF_SERVICE Mode' : 'TABLE_SERVICE Mode'}
+                        </span>
+                    </div>
+                    <p className="text-xs text-slate-500 mt-1 font-medium">
+                        {isSelfService
+                            ? 'Single common QR code for whole hotel self-service ordering'
+                            : 'Dedicated unique QR codes per table with live revocation control'
+                        }
+                    </p>
+                </div>
+
+                <div className="flex items-center gap-3">
+                    {!isSelfService && (
+                        <form onSubmit={handleCreateTable} className="flex items-center gap-2">
+                            <input
+                                type="number"
+                                placeholder="Table #"
+                                required
+                                min="1"
+                                value={newTableNum}
+                                onChange={(e) => setNewTableNum(e.target.value)}
+                                className="w-24 h-10 px-3 bg-white border border-slate-200 rounded-xl text-xs font-bold outline-none text-slate-900 focus:border-slate-900"
+                            />
+                            <button
+                                type="submit"
+                                className="h-10 px-4 bg-[#114536] hover:bg-[#0c382b] text-white text-xs font-bold rounded-xl transition-all shadow-md flex items-center gap-1.5"
+                            >
+                                <Plus className="w-4 h-4 text-emerald-200" /> Add Table
+                            </button>
+                        </form>
+                    )}
+
+                    <button
+                        onClick={handlePrint}
+                        className="h-10 px-4 bg-[#114536] hover:bg-[#0c382b] text-white text-xs font-bold rounded-xl transition-all shadow-md flex items-center gap-2"
+                    >
+                        <Printer className="w-4 h-4 text-emerald-200" />
+                        <span>Print QR Cards</span>
+                    </button>
+                </div>
+            </div>
+
+            {loading ? (
+                <AdminSkeletonCards count={6} />
+            ) : isSelfService ? (
+                /* Common Self Service QR Card */
+                <div className="max-w-md mx-auto bg-white rounded-3xl p-8 border border-slate-200 shadow-lg text-center space-y-4 print:border-2 print:border-black">
+                    <div className="inline-flex items-center gap-2 bg-amber-50 text-amber-900 font-extrabold text-xs px-3 py-1.5 rounded-full border border-amber-200">
+                        <Sparkles className="w-4 h-4 text-amber-500" />
+                        Hotel Common Self-Service QR
+                    </div>
+                    <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 inline-block my-2">
+                        <QRCodeSVG
+                            value={`${baseUrl}/qr/common`}
+                            size={200}
+                            bgColor={"#ffffff"}
+                            fgColor={"#0f172a"}
+                            level={"H"}
+                            includeMargin={false}
+                        />
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-black text-slate-900">Scan to Order</h2>
+                        <p className="text-xs text-slate-500 font-semibold mt-1">
+                            Customers scan this common QR code to get an independent session & unique order number.
+                        </p>
+                        <div className="pt-2 flex items-center justify-center gap-1.5 w-full">
+                            <a
+                                href={`${baseUrl}/qr/common`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-xs text-emerald-700 hover:text-emerald-900 font-mono truncate underline print:no-underline print:text-slate-500 inline-flex items-center gap-1 min-w-0"
+                                title={`Open ${baseUrl}/qr/common in a new tab`}
+                            >
+                                <span className="truncate">{baseUrl}/qr/common</span>
+                                <ExternalLink className="w-3.5 h-3.5 shrink-0 print:hidden" />
+                            </a>
+                            <button
+                                type="button"
+                                onClick={() => handleCopyLink(`${baseUrl}/qr/common`, 'common')}
+                                className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 transition-colors shrink-0 print:hidden cursor-pointer"
+                                title="Copy common QR link"
+                            >
+                                {copiedKey === 'common' ? (
+                                    <Check className="w-3.5 h-3.5 text-emerald-600" />
+                                ) : (
+                                    <Copy className="w-3.5 h-3.5" />
+                                )}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                /* Table Service QR Grid */
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {tables.map((tbl) => {
+                        const qrUrl = `${baseUrl}/qr/${tbl.qr_code || tbl.id}`;
+                        const isRevoked = tbl.revoked;
+
+                        return (
+                            <div
+                                key={tbl.id}
+                                className={`bg-white rounded-3xl p-5 border transition-all flex flex-col items-center text-center justify-between print:border-2 print:border-black print:break-inside-avoid ${isRevoked ? 'border-rose-200 opacity-75 bg-rose-50/30' : 'border-slate-200/80 shadow-sm hover:shadow-md'
+                                    }`}
+                            >
+                                <div className="w-full pb-3 border-b border-slate-100 mb-3 flex items-center justify-between">
+                                    <span className="text-xs font-black text-slate-900 tracking-wider uppercase flex items-center gap-1">
+                                        <Sparkles className="w-3 h-3 text-amber-500" /> Table #{tbl.table_number}
+                                    </span>
+                                    <button
+                                        onClick={() => handleDeleteTableClick(tbl)}
+                                        className="text-xs text-rose-500 hover:text-rose-700 font-bold print:hidden p-1 cursor-pointer"
+                                        title="Delete table"
+                                    >
+                                        <Trash2 className="w-4 h-4" />
+                                    </button>
+                                </div>
+
+                                {/* QR Code SVG */}
+                                <div className={`p-3 rounded-2xl border my-2 ${isRevoked ? 'bg-rose-100/50 border-rose-200 opacity-40' : 'bg-slate-50 border-slate-200'}`}>
+                                    <QRCodeSVG
+                                        value={qrUrl}
+                                        size={140}
+                                        bgColor={"#ffffff"}
+                                        fgColor={isRevoked ? "#e11d48" : "#0f172a"}
+                                        level={"H"}
+                                        includeMargin={false}
+                                    />
+                                </div>
+
+                                <div className="mt-2 space-y-1 w-full">
+                                    <h2 className="text-xl font-black text-slate-900">Table #{tbl.table_number}</h2>
+
+                                    {/* Revocation Status */}
+                                    <div className="pt-2 flex items-center justify-center gap-2 print:hidden">
+                                        <button
+                                            onClick={() => handleToggleRevoked(tbl.id)}
+                                            className={`w-full py-2 px-3 rounded-xl text-xs font-bold transition-all border flex items-center justify-center gap-1.5 ${isRevoked
+                                                ? 'bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100'
+                                                : 'bg-rose-50 text-rose-800 border-rose-200 hover:bg-rose-100'
+                                                }`}
+                                        >
+                                            {isRevoked ? (
+                                                <>
+                                                    <CheckCircle className="w-3.5 h-3.5" />
+                                                    <span>Re-Activate QR</span>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <ShieldOff className="w-3.5 h-3.5 text-rose-600" />
+                                                    <span>Revoke / Disable</span>
+                                                </>
+                                            )}
+                                        </button>
+                                    </div>
+
+                                    <div className="pt-1.5 flex items-center justify-center gap-1.5 w-full">
+                                        <a
+                                            href={qrUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-[10px] text-emerald-700 hover:text-emerald-900 font-mono truncate underline print:no-underline print:text-slate-500 inline-flex items-center gap-1 min-w-0"
+                                            title={`Open ${qrUrl} in a new tab`}
+                                        >
+                                            <span className="truncate">{qrUrl}</span>
+                                            <ExternalLink className="w-3 h-3 shrink-0 print:hidden" />
+                                        </a>
+                                        <button
+                                            type="button"
+                                            onClick={() => handleCopyLink(qrUrl, tbl.id)}
+                                            className="p-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 transition-colors shrink-0 print:hidden cursor-pointer"
+                                            title="Copy table QR link"
+                                        >
+                                            {copiedKey === tbl.id ? (
+                                                <Check className="w-3 h-3 text-emerald-600" />
+                                            ) : (
+                                                <Copy className="w-3 h-3" />
+                                            )}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            )}
+
+            {/* Reusable Confirm Delete Modal */}
+            <ConfirmDeleteModal
+                isOpen={deleteModalOpen}
+                onClose={() => {
+                    setDeleteModalOpen(false);
+                    setTableToDelete(null);
+                }}
+                onConfirm={handleConfirmDeleteTable}
+                title="Delete Table"
+                message="Are you sure you want to delete this table assignment and QR code?"
+                itemTitle={tableToDelete ? `Table #${tableToDelete.table_number}` : ''}
+                loading={isDeleting}
+            />
+        </div>
+    );
+}

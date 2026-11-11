@@ -1,0 +1,15 @@
+{
+  "extends": "./packages/config/tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@orbyt/config/*": ["packages/config/*"],
+      "@orbyt/shared": ["packages/shared/src/index.ts"],
+      "@orbyt/shared/*": ["packages/shared/src/*"],
+      "@orbyt/ui": ["packages/ui/src/index.ts"],
+      "@orbyt/ui/*": ["packages/ui/src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist", ".next"]
+}
+

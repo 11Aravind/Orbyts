@@ -1,0 +1,14 @@
+{
+  "name": "@orbyt/config",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./index.js",
+  "files": [
+    "tsconfig.base.json",
+    "tsconfig.next.json",
+    "tsconfig.react.json",
+    "tailwind.base.js",
+    "eslint.base.js"
+  ]
+}
+
