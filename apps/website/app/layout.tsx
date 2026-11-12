@@ -8,7 +8,9 @@ export const metadata: Metadata = {
   description:
     'Discover practical software products, digital security services, and custom technology solutions with ORBYT.',
   icons: {
-    icon: '/images/orbyt-logo.png',
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
   },
 };
 
