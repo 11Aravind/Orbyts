@@ -68,3 +68,42 @@ export function formatDate(dateString: string): string {
   }
 }
 
+/**
+ * Common User Roles across the Orbyt Ecosystem
+ */
+export type UserRole = 'admin' | 'cashier' | 'waiter' | 'kitchen' | 'customer';
+
+/**
+ * Restaurant Dining Order Status Lifecycle
+ */
+export type OrderLifecycleStatus =
+  | 'pending'
+  | 'cooking'
+  | 'ready'
+  | 'served'
+  | 'billed'
+  | 'settled'
+  | 'cancelled';
+
+/**
+ * Standard API Response Structure
+ */
+export interface ApiResponse<T = unknown> {
+  success: boolean;
+  data?: T;
+  error?: string;
+  timestamp: string;
+}
+
+/**
+ * Dining Table Definition
+ */
+export interface DiningTable {
+  id: string;
+  tableNumber: string | number;
+  status: 'vacant' | 'occupied' | 'billed' | 'dirty';
+  capacity?: number;
+  activeOrderId?: string;
+}
+
+

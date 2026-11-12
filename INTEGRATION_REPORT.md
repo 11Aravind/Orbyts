@@ -47,7 +47,7 @@ d:\Orbyts\
 | **1. Independent Company Website** | `apps/website` maintains its own Next.js 15 engine, isolated `package.json`, and deployment pipeline. It does not depend on InByte internals. | Verified |
 | **2. Independent InByte Software** | `apps/inbyte` maintains its React 19 + Vite setup, internal routing (`react-router-dom`), and state management. Zero business logic changed. | Verified |
 | **3. Product Details Inside Website** | Dedicated InByte product landing page resides at `apps/website/app/products/inbyte/page.tsx` with full architectural and feature deep-dives. | Verified |
-| **4. Minimal Shared Packages** | Reusable utilities (`formatCurrency`, `formatDate`, `ORBYT_PRODUCTS`) and foundational tokens reside in `packages/shared` and `packages/ui` without bleeding app-specific code. | Verified |
+| **4. Minimal Shared Packages** | Reusable UI components (`Button`, `Badge`, `Input`, `Textarea`, `cn`) in `packages/ui`; universal types (`UserRole`, `OrderLifecycleStatus`, `ApiResponse`, `DiningTable`) and utilities (`formatCurrency`, `formatDate`, `ORBYT_PRODUCTS`) in `packages/shared`. No app-specific logic leaked. | Verified |
 | **5. Independent Dev Scripts** | Root scripts configured: `pnpm dev:website` and `pnpm dev:inbyte`. | Verified |
 | **6. Independent Production Builds** | Root scripts configured: `pnpm build:website` and `pnpm build:inbyte`. | Verified |
 | **7. App-Specific Environment Variables** | `apps/website/.env.example` and `apps/inbyte/.env.example` define explicit, non-overlapping variable schemas. | Verified |
@@ -79,3 +79,4 @@ d:\Orbyts\
 | `innbite` | `pnpm --filter innbite build` | `0` | Built with Vite in 25.19s |
 | Root | `pnpm build:website` & `pnpm build:inbyte` | `0` | Both independent pipelines fully verified |
 | Original Sources | `C:\Users\Dell\Downloads\New folder` & `D:\Projects\InnBite` | Unaltered | Original reference folders strictly untouched |
+

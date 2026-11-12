@@ -71,3 +71,91 @@ export const Badge: React.FC<BadgeProps> = ({
   );
 };
 
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label?: string;
+  error?: string;
+}
+
+export const Input: React.FC<InputProps> = ({
+  className = '',
+  label,
+  error,
+  id,
+  ...props
+}) => {
+  return React.createElement(
+    'div',
+    { className: 'flex flex-col gap-1.5 w-full' },
+    label &&
+      React.createElement(
+        'label',
+        {
+          htmlFor: id,
+          className: 'text-xs font-mono text-neutral-400',
+        },
+        label
+      ),
+    React.createElement('input', {
+      id,
+      className: `w-full px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/10 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors ${
+        error ? 'border-red-500/50 focus:border-red-500' : ''
+      } ${className}`,
+      ...props,
+    }),
+    error &&
+      React.createElement(
+        'span',
+        { className: 'text-xs text-red-400 font-mono mt-0.5' },
+        error
+      )
+  );
+};
+
+export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  label?: string;
+  error?: string;
+}
+
+export const Textarea: React.FC<TextareaProps> = ({
+  className = '',
+  label,
+  error,
+  id,
+  ...props
+}) => {
+  return React.createElement(
+    'div',
+    { className: 'flex flex-col gap-1.5 w-full' },
+    label &&
+      React.createElement(
+        'label',
+        {
+          htmlFor: id,
+          className: 'text-xs font-mono text-neutral-400',
+        },
+        label
+      ),
+    React.createElement('textarea', {
+      id,
+      className: `w-full px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/10 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors ${
+        error ? 'border-red-500/50 focus:border-red-500' : ''
+      } ${className}`,
+      ...props,
+    }),
+    error &&
+      React.createElement(
+        'span',
+        { className: 'text-xs text-red-400 font-mono mt-0.5' },
+        error
+      )
+  );
+};
+
+/**
+ * Class name combiner utility
+ */
+export function cn(...classes: (string | undefined | null | false)[]): string {
+  return classes.filter(Boolean).join(' ');
+}
+
+

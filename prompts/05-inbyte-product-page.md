@@ -2,19 +2,18 @@ You are a Senior SaaS Product Designer,
 UI/UX Architect and Next.js Developer.
 
 I want to create a premium SaaS product landing page
-for my existing software product named INBYTE.
+for my existing software product named innbite.
 
 IMPORTANT:
 
-The actual InByte software is already developed using React.js.
+The actual innbite software is already developed using React.js.
 
 Its source code is provided separately for reference.
 
-INBYTE SOURCE PATH:
+innbite SOURCE PATH:
+D:\Projects\innbite
 
-[PASTE INBYTE SOFTWARE SOURCE PATH]
-
-Do not modify the actual InByte application.
+Do not modify the actual innbite application.
 
 Your task is to study the existing application
 and create a separate product marketing page
@@ -22,7 +21,7 @@ inside the company website.
 
 DESTINATION:
 
-apps/website/app/products/inbyte/
+apps/website/app/products/innbite/
 
 OBJECTIVE:
 
@@ -48,7 +47,7 @@ PAGE STRUCTURE:
 
 1. Hero Section
 
-   - InByte logo.
+   - innbite logo.
    - Product title.
    - Professional tagline.
    - Short product description.
@@ -56,9 +55,9 @@ PAGE STRUCTURE:
    - Explore Features button.
    - Product dashboard preview.
 
-2. About InByte
+2. About innbite
 
-   - What is InByte?
+   - What is innbite?
    - What problem does it solve?
    - Who can use it?
 
@@ -114,7 +113,7 @@ TECHNOLOGY:
 
 IMPORTANT:
 
-The product details page and the actual InByte
+The product details page and the actual innbite
 software must remain separate applications.
 
 The Demo button must not redirect to a fake route.
