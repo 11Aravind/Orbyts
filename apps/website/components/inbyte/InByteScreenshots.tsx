@@ -35,16 +35,16 @@ export default function InByteScreenshots() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 border-b border-white/[0.08] relative">
+    <section className="py-20 lg:py-28 border-b border-neutral-200 dark:border-white/[0.08] relative">
       <div className="max-w-[1448px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-block text-xs font-mono uppercase tracking-widest text-emerald-400 mb-3">
+          <div className="inline-block text-xs font-mono uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-3 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20">
             Interface Showcase
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 dark:text-white leading-tight">
             Designed for high-pressure restaurant workflows.
           </h2>
-          <p className="mt-4 text-neutral-400 text-base sm:text-lg">
+          <p className="mt-4 text-neutral-600 dark:text-neutral-400 text-base sm:text-lg">
             Explore how each role interacts with InByte &mdash; from the dining customer to the executive chef and cashier.
           </p>
         </div>
@@ -60,8 +60,8 @@ export default function InByteScreenshots() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-5 py-3 rounded-xl border text-xs font-medium transition-all cursor-pointer ${
                   isActive
-                    ? 'border-emerald-500/40 bg-emerald-950/20 text-emerald-300 shadow-lg shadow-emerald-500/5'
-                    : 'border-white/10 bg-white/[0.02] text-neutral-400 hover:text-white hover:border-white/20'
+                    ? 'border-emerald-500/40 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300 shadow-lg shadow-emerald-500/5'
+                    : 'border-neutral-200 dark:border-white/10 bg-white dark:bg-white/[0.02] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:border-neutral-300 dark:hover:border-white/20'
                 }`}
               >
                 {tab.icon}
