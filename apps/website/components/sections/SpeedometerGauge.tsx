@@ -46,6 +46,8 @@ export default function SpeedometerGauge({
   onModeChange: (mode: GaugeMode) => void;
 }) {
   const current = MODES[activeMode];
+  const fillPercent = Math.min(100, Math.max(0, 50 + (current.angle / 180) * 100));
+  const dashArray = `${fillPercent.toFixed(2)} ${(100 - fillPercent).toFixed(2)}`;
 
   return (
     <div className="relative w-full max-w-[500px] aspect-[24/17] select-none group">
@@ -99,12 +101,15 @@ export default function SpeedometerGauge({
         <path
           d="M46.4 310.5a206 206 0 1 1 387.2 0"
           fill="none"
+          pathLength="100"
           stroke="url(#remote-cache-gauge-gradient)"
           strokeWidth="18"
           strokeLinecap="round"
-          strokeDasharray="500"
-          strokeDashoffset="120"
+          strokeDasharray={dashArray}
           className="opacity-75"
+          style={{
+            transition: 'stroke-dasharray 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+          }}
         />
 
         {/* Center Rotating Needle */}

@@ -37,19 +37,24 @@ export default function HeroSection() {
         base = 0;
         break;
       case 'ai':
-        base = 18;
+        base = 4;
         break;
       case 'security':
-        base = 36;
+        base = 8;
         break;
       case 'development':
-        base = 54;
+        base = 12;
         break;
     }
-    return isHovered ? base + 36 : base;
+    // Idle shows Image 1 (0°). Hover revs up and shows Image 2 (36°).
+    return isHovered ? 36 : base;
   };
 
   const needleRotation = getRotation();
+  const fillPercent = Math.min(100, Math.max(0, 80.9513 + (needleRotation / 220) * 100));
+  const remainPercent = 100 - fillPercent;
+  const dashArray = `${fillPercent.toFixed(2)} ${remainPercent.toFixed(2)}`;
+  const remainderDashArray = `0 ${fillPercent.toFixed(2)} ${remainPercent.toFixed(2)} 0`;
 
   return (
     <section className="relative pt-12 pb-24 lg:pt-28 lg:pb-36 overflow-hidden">
@@ -200,10 +205,32 @@ export default function HeroSection() {
                     </g>
                   </mask>
                   <mask id="remote-cache-gauge-inner-indicator-mask" style={{ maskType: 'alpha' }}>
-                    <path d="M54.9 307.4a197 197 0 1 1 370.2 0" fill="none" pathLength="100" stroke="white" strokeDasharray="80.95 19.05" strokeLinecap="butt" strokeWidth="394" />
+                    <path
+                      d="M54.9 307.4a197 197 0 1 1 370.2 0"
+                      fill="none"
+                      pathLength="100"
+                      stroke="white"
+                      strokeDasharray={dashArray}
+                      strokeLinecap="butt"
+                      strokeWidth="394"
+                      style={{
+                        transition: 'stroke-dasharray 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                      }}
+                    />
                   </mask>
                   <mask id="remote-cache-gauge-inner-remainder-mask" style={{ maskType: 'alpha' }}>
-                    <path d="M54.9 307.4a197 197 0 1 1 370.2 0" fill="none" pathLength="100" stroke="white" strokeDasharray="0 80.95 19.05 0" strokeLinecap="butt" strokeWidth="394" />
+                    <path
+                      d="M54.9 307.4a197 197 0 1 1 370.2 0"
+                      fill="none"
+                      pathLength="100"
+                      stroke="white"
+                      strokeDasharray={remainderDashArray}
+                      strokeLinecap="butt"
+                      strokeWidth="394"
+                      style={{
+                        transition: 'stroke-dasharray 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                      }}
+                    />
                   </mask>
                   <linearGradient id="remote-cache-gauge-end-fade" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1="310.5" y2="270">
                     <stop offset="0" stopColor="white" stopOpacity="0" />
@@ -226,9 +253,12 @@ export default function HeroSection() {
                     filter="url(#remote-cache-gauge-glow)"
                     pathLength="100"
                     stroke="url(#remote-cache-gauge-gradient)"
-                    strokeDasharray="80.95 19.05"
+                    strokeDasharray={dashArray}
                     strokeLinecap="butt"
                     strokeWidth="21"
+                    style={{
+                      transition: 'stroke-dasharray 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                    }}
                   />
                 </g>
 
@@ -242,7 +272,18 @@ export default function HeroSection() {
                     <g mask="url(#remote-cache-gauge-inner-remainder-mask)">
                       <path className="opacity-30 dark:opacity-20" d="M54.9 307.4a197 197 0 1 1 370.2 0L240 240Z" fill="rgba(255, 255, 255, 0.2)" mask="url(#remote-cache-gauge-fade-mask)" />
                     </g>
-                    <path d="M46.4 310.5a206 206 0 1 1 387.2 0" fill="none" pathLength="100" stroke="url(#remote-cache-gauge-gradient)" strokeDasharray="80.95 19.05" strokeLinecap="butt" strokeWidth="18" />
+                    <path
+                      d="M46.4 310.5a206 206 0 1 1 387.2 0"
+                      fill="none"
+                      pathLength="100"
+                      stroke="url(#remote-cache-gauge-gradient)"
+                      strokeDasharray={dashArray}
+                      strokeLinecap="butt"
+                      strokeWidth="18"
+                      style={{
+                        transition: 'stroke-dasharray 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                      }}
+                    />
                   </g>
                 </g>
 
