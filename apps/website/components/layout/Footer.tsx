@@ -14,7 +14,7 @@ export default function Footer() {
                 alt="ORBYT Logo"
                 width={28}
                 height={28}
-                className="h-7 w-auto object-contain"
+                className="h-7 w-auto object-contain dark:invert-0 invert"
               />
               <span className="font-bold text-xl tracking-tight text-neutral-900 dark:text-white">ORBYT</span>
             </div>

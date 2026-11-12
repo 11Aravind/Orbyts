@@ -242,6 +242,9 @@ export default function HeroSection() {
                   <filter id="remote-cache-gauge-glow" height="160%" width="160%" x="-30%" y="-30%">
                     <feGaussianBlur stdDeviation="2.5" />
                   </filter>
+                  <filter id="needle-soft-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="3" />
+                  </filter>
                 </defs>
 
                 {/* Outer Glow */}
@@ -265,12 +268,12 @@ export default function HeroSection() {
                 {/* Segmented Base Track and Active Arc */}
                 <g mask="url(#remote-cache-gauge-segment-mask)">
                   <g mask="url(#remote-cache-gauge-end-fade-mask)">
-                    <path d="M46.4 310.5a206 206 0 1 1 387.2 0" fill="none" stroke="rgba(255, 255, 255, 0.15)" strokeLinecap="butt" strokeWidth="18" />
+                    <path d="M46.4 310.5a206 206 0 1 1 387.2 0" fill="none" stroke="var(--remote-cache-track-color)" strokeLinecap="butt" strokeWidth="18" />
                     <g mask="url(#remote-cache-gauge-inner-indicator-mask)">
                       <path className="opacity-30 dark:opacity-25" d="M54.9 307.4a197 197 0 1 1 370.2 0L240 240Z" fill="url(#remote-cache-gauge-inner-gradient)" mask="url(#remote-cache-gauge-fade-mask)" />
                     </g>
                     <g mask="url(#remote-cache-gauge-inner-remainder-mask)">
-                      <path className="opacity-30 dark:opacity-20" d="M54.9 307.4a197 197 0 1 1 370.2 0L240 240Z" fill="rgba(255, 255, 255, 0.2)" mask="url(#remote-cache-gauge-fade-mask)" />
+                      <path className="opacity-30 dark:opacity-20" d="M54.9 307.4a197 197 0 1 1 370.2 0L240 240Z" fill="var(--remote-cache-remainder-fill)" mask="url(#remote-cache-gauge-fade-mask)" />
                     </g>
                     <path
                       d="M46.4 310.5a206 206 0 1 1 387.2 0"
@@ -288,7 +291,7 @@ export default function HeroSection() {
                 </g>
 
                 {/* Tick Marks (43 lines matching original) */}
-                <g className="mix-blend-multiply dark:mix-blend-normal" stroke="rgba(255, 255, 255, 0.3)" strokeWidth="1">
+                <g className="mix-blend-multiply dark:mix-blend-normal" stroke="var(--remote-cache-tick-color)" strokeWidth="1">
                   <line x1="58.85" x2="51.14" y1="290.27" y2="292.41" />
                   <line x1="55.47" x2="47.61" y1="275.94" y2="277.47" />
                   <line x1="53.22" x2="45.27" y1="261.38" y2="262.29" />
@@ -346,20 +349,30 @@ export default function HeroSection() {
                       willChange: 'transform',
                     }}
                   >
-                    {/* Needle Drop Shadow */}
-                    <polygon points="243.12,249.37 374.53,185.90 236.88,230.57" fill="rgba(0,0,0,0.55)" transform="translate(2, 4)" />
-                    {/* Main Metallic Needle Body */}
-                    <polygon points="243.12,249.37 374.53,185.90 236.88,230.57" fill="url(#remote-cache-gauge-pointer-gradient)" stroke="#ffffff" strokeWidth="0.8" />
+                    {/* Needle Drop Shadow with soft blur */}
+                    <polygon
+                      points="243.12,249.37 374.53,185.90 236.88,230.57"
+                      fill="var(--remote-cache-needle-shadow)"
+                      filter="url(#needle-soft-shadow)"
+                      transform="translate(1, 3)"
+                    />
+                    {/* Main Metallic Needle Body with theme-adaptive stroke */}
+                    <polygon
+                      points="243.12,249.37 374.53,185.90 236.88,230.57"
+                      fill="url(#remote-cache-gauge-pointer-gradient)"
+                      stroke="var(--remote-cache-needle-stroke)"
+                      strokeWidth="0.8"
+                    />
                     {/* Highlight Spine */}
                     <line x1="236.88" y1="230.57" x2="374.53" y2="185.90" stroke="#ffffff" strokeWidth="1.3" strokeLinecap="round" />
                   </g>
 
                   {/* Center Metallic Hub */}
                   <g>
-                    <circle cx="240" cy="240" fill="rgba(255, 255, 255, 0.2)" r="20" />
+                    <circle cx="240" cy="240" fill="var(--remote-cache-hub-halo)" r="20" />
                     <circle cx="240" cy="240" fill="url(#remote-cache-gauge-dot-gradient)" r="18" />
                     <ellipse cx="235" cy="233.5" fill="white" fillOpacity="0.22" rx="7" ry="3" transform="rotate(-25 235 233.5)" />
-                    <circle cx="240" cy="240" fill="url(#remote-cache-gauge-pin-gradient)" r="7" stroke="rgba(255, 255, 255, 0.3)" strokeWidth="1" />
+                    <circle cx="240" cy="240" fill="url(#remote-cache-gauge-pin-gradient)" r="7" stroke="var(--remote-cache-needle-stroke)" strokeWidth="1" />
                   </g>
                 </g>
               </svg>

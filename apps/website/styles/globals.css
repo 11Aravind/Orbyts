@@ -35,7 +35,12 @@
   --ds-gray-alpha-600: rgba(0, 0, 0, 0.3);
   --remote-cache-inner-start: #0196FF;
   --remote-cache-inner-end: #FF1E56;
-  --remote-cache-tick-color: rgba(0, 0, 0, 0.25);
+  --remote-cache-tick-color: rgba(0, 0, 0, 0.35);
+  --remote-cache-track-color: rgba(0, 0, 0, 0.1);
+  --remote-cache-remainder-fill: rgba(0, 0, 0, 0.04);
+  --remote-cache-hub-halo: rgba(0, 0, 0, 0.08);
+  --remote-cache-needle-stroke: rgba(0, 0, 0, 0.15);
+  --remote-cache-needle-shadow: rgba(0, 0, 0, 0.25);
 }
 
 html.dark {
@@ -50,7 +55,12 @@ html.dark {
   --ds-gray-alpha-600: rgba(255, 255, 255, 0.4);
   --remote-cache-inner-start: #0196FF;
   --remote-cache-inner-end: #FF1E56;
-  --remote-cache-tick-color: rgba(255, 255, 255, 0.4);
+  --remote-cache-tick-color: rgba(255, 255, 255, 0.35);
+  --remote-cache-track-color: rgba(255, 255, 255, 0.15);
+  --remote-cache-remainder-fill: rgba(255, 255, 255, 0.2);
+  --remote-cache-hub-halo: rgba(255, 255, 255, 0.2);
+  --remote-cache-needle-stroke: #ffffff;
+  --remote-cache-needle-shadow: rgba(0, 0, 0, 0.6);
 }
 
 body {

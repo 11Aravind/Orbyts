@@ -92,7 +92,7 @@ export default function SpeedometerGauge({
         <path
           d="M46.4 310.5a206 206 0 1 1 387.2 0"
           fill="none"
-          stroke="rgba(255, 255, 255, 0.1)"
+          stroke="var(--remote-cache-track-color)"
           strokeWidth="18"
           strokeLinecap="round"
         />
@@ -126,7 +126,7 @@ export default function SpeedometerGauge({
             y1="240"
             x2="240"
             y2="75"
-            stroke="#ffffff"
+            stroke="var(--remote-cache-needle-stroke)"
             strokeWidth="3"
             strokeLinecap="round"
           />
@@ -141,25 +141,25 @@ export default function SpeedometerGauge({
             strokeLinecap="round"
           />
           {/* Needle Center Pin */}
-          <circle cx="240" cy="240" r="14" fill="#121215" stroke="#ffffff" strokeWidth="2" />
+          <circle cx="240" cy="240" r="14" fill="var(--remote-cache-hub-halo)" stroke="var(--remote-cache-needle-stroke)" strokeWidth="2" />
           <circle cx="240" cy="240" r="5" fill="#00f0ff" />
         </g>
       </svg>
 
       {/* Floating Center Stats Overlay */}
       <div className="absolute inset-x-0 bottom-4 flex flex-col items-center text-center">
-        <span className="text-xs font-mono uppercase tracking-wider text-cyan-400">
+        <span className="text-xs font-mono uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
           {current.label}
         </span>
         <div className="mt-2 flex items-center gap-6">
           <div>
-            <div className="text-xl font-bold font-mono text-white">{current.metric1.value}</div>
-            <div className="text-[11px] text-neutral-400">{current.metric1.label}</div>
+            <div className="text-xl font-bold font-mono text-neutral-900 dark:text-white">{current.metric1.value}</div>
+            <div className="text-[11px] text-neutral-500 dark:text-neutral-400">{current.metric1.label}</div>
           </div>
-          <div className="w-px h-8 bg-white/10" />
+          <div className="w-px h-8 bg-neutral-200 dark:bg-white/10" />
           <div>
-            <div className="text-xl font-bold font-mono text-emerald-400">{current.metric2.value}</div>
-            <div className="text-[11px] text-neutral-400">{current.metric2.label}</div>
+            <div className="text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400">{current.metric2.value}</div>
+            <div className="text-[11px] text-neutral-500 dark:text-neutral-400">{current.metric2.label}</div>
           </div>
         </div>
       </div>
