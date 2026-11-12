@@ -89,6 +89,7 @@ export default function CustomerOrderDetailsModal({
             clearInterval(interval);
             if (subscription) supabase.removeChannel(subscription);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [disableSubscription, onClose]);
 
     if (!orders || orders.length === 0) return null;

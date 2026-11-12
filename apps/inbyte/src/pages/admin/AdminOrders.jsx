@@ -169,6 +169,7 @@ export default function AdminOrders() {
             window.removeEventListener('innbite:new-order', handleCrossTabOrder);
             if (subscription) supabase.removeChannel(subscription);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [soundEnabled]);
 
     const handleToggleNotification = async () => {

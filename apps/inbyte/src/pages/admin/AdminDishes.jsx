@@ -510,6 +510,7 @@ export default function AdminDishes() {
                 );
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     ], [categories]);
 
     // Extra Header Controls (Category Dropdown & Status Dropdown)

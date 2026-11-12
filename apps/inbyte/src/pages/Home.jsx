@@ -197,6 +197,7 @@ export default function Home() {
             clearInterval(interval);
             if (subscription) supabase.removeChannel(subscription);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchParams]);
 
     useEffect(() => {

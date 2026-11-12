@@ -407,6 +407,7 @@ export default function KitchenView() {
             window.removeEventListener('focus', handleVisibilityOrFocus);
             if (subscription) supabase.removeChannel(subscription);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [soundEnabled, user]);
 
     const [isEnablingAlerts, setIsEnablingAlerts] = useState(false);

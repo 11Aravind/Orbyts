@@ -16,7 +16,7 @@ export default function BannerCarousel({ banners = [], isLoading = false }) {
         if (currentIndex >= banners.length && banners.length > 0) {
             setCurrentIndex(0);
         }
-    }, [banners.length]);
+    }, [banners.length, currentIndex]);
 
     // Autoplay timer
     useEffect(() => {
