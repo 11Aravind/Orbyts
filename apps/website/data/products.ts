@@ -28,7 +28,7 @@ export const PRODUCTS: Product[] = [
     longDescription:
       'InByte is a tested, feature-complete restaurant management application. Built on React 19, Supabase, and Tailwind CSS, it offers customers frictionless QR ordering without downloads, gives waiters instant lock-screen audio notifications, and arms managers with complete POS billing and dish control.',
     logo: '/images/orbyt-logo.png',
-    previewImage: '/images/dine-preview.jpg',
+    previewImage: '/images/orbyes.png',
     features: [
       'Customer QR Scanning (Table-specific & Common Counter)',
       'Real-Time Kitchen Kanban Display (KDS)',

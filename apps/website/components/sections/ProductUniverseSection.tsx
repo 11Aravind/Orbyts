@@ -37,7 +37,7 @@ export default function ProductUniverseSection() {
                 className="aspect-[40/27] overflow-hidden rounded-xl border border-neutral-200 dark:border-white/[0.08] bg-neutral-100 dark:bg-neutral-950/80 hover:border-neutral-300 dark:hover:border-white/20 transition-all relative group flex items-center justify-center block shadow-sm"
               >
                 <Image
-                  src="/images/dine-preview.jpg"
+                  src="/images/orbyes.png"
                   alt="Innbite QR Food Ordering Preview"
                   width={600}
                   height={400}
@@ -47,7 +47,7 @@ export default function ProductUniverseSection() {
               <div className="flex flex-col gap-2">
                 <div className="flex items-center justify-between">
                   <Link href="/products/inbyte" className="font-semibold text-neutral-900 dark:text-white text-base hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">
-                    Innbite (InByte)
+                    Innbite
                   </Link>
                   <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/10 text-neutral-600 dark:text-neutral-400">
                     QR Dining
