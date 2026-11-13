@@ -76,11 +76,10 @@ export default function HeroSection() {
               <button
                 type="button"
                 onClick={() => setMode('software')}
-                className={`cursor-pointer px-2.5 py-1 rounded text-[13px] transition-colors ${
-                  mode === 'software'
-                    ? 'text-neutral-900 dark:text-white font-medium'
-                    : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white font-normal'
-                }`}
+                className={`cursor-pointer px-2.5 py-1 rounded text-[13px] transition-colors ${mode === 'software'
+                  ? 'text-neutral-900 dark:text-white font-medium'
+                  : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white font-normal'
+                  }`}
               >
                 Software
               </button>
@@ -88,11 +87,10 @@ export default function HeroSection() {
               <button
                 type="button"
                 onClick={() => setMode('ai')}
-                className={`cursor-pointer px-2.5 py-1 rounded text-[13px] transition-colors ${
-                  mode === 'ai'
-                    ? 'text-neutral-900 dark:text-white font-medium'
-                    : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white font-normal'
-                }`}
+                className={`cursor-pointer px-2.5 py-1 rounded text-[13px] transition-colors ${mode === 'ai'
+                  ? 'text-neutral-900 dark:text-white font-medium'
+                  : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white font-normal'
+                  }`}
               >
                 AI
               </button>
@@ -100,11 +98,10 @@ export default function HeroSection() {
               <button
                 type="button"
                 onClick={() => setMode('security')}
-                className={`cursor-pointer px-2.5 py-1 rounded text-[13px] transition-colors ${
-                  mode === 'security'
-                    ? 'text-neutral-900 dark:text-white font-medium'
-                    : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white font-normal'
-                }`}
+                className={`cursor-pointer px-2.5 py-1 rounded text-[13px] transition-colors ${mode === 'security'
+                  ? 'text-neutral-900 dark:text-white font-medium'
+                  : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white font-normal'
+                  }`}
               >
                 Security
               </button>
@@ -112,11 +109,10 @@ export default function HeroSection() {
               <button
                 type="button"
                 onClick={() => setMode('development')}
-                className={`cursor-pointer px-2.5 py-1 rounded text-[13px] transition-colors ${
-                  mode === 'development'
-                    ? 'text-neutral-900 dark:text-white font-medium'
-                    : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white font-normal'
-                }`}
+                className={`cursor-pointer px-2.5 py-1 rounded text-[13px] transition-colors ${mode === 'development'
+                  ? 'text-neutral-900 dark:text-white font-medium'
+                  : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white font-normal'
+                  }`}
               >
                 Development
               </button>
@@ -128,25 +124,9 @@ export default function HeroSection() {
                 onClick={handleCopy}
                 className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900/60 hover:border-neutral-400 dark:hover:border-neutral-700 transition-colors cursor-pointer shadow-sm"
               >
-                <span className="text-neutral-500 font-mono text-xs select-none">$</span>
-                <span className="font-mono text-xs text-neutral-800 dark:text-neutral-200 select-all">{commandText}</span>
-                {copied ? (
-                  <span className="text-emerald-500 dark:text-emerald-400 font-mono text-[10px] px-1 font-semibold">copied!</span>
-                ) : (
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 16 16"
-                    fill="currentColor"
-                    className="text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M8.25 2c.14 0 .25.11.25.25V3H10v-.75C10 1.28 9.22.5 8.25.5h-5.5C1.78.5 1 1.28 1 2.25v7.5c0 .97.78 1.75 1.75 1.75H4.5V10H2.75a.25.25 0 0 1-.25-.25v-7.5c0-.14.11-.25.25-.25zm5 4c.14 0 .25.11.25.25v7.5q-.02.23-.25.25h-5.5a.25.25 0 0 1-.25-.25v-7.5c0-.14.11-.25.25-.25zm0 9.5c.97 0 1.75-.78 1.75-1.75v-7.5c0-.97-.78-1.75-1.75-1.75h-5.5C6.78 4.5 6 5.28 6 6.25v7.5c0 .97.78 1.75 1.75 1.75z"
-                    />
-                  </svg>
-                )}
+                <span className="font-mono text-xs text-neutral-800 dark:text-neutral-200 select-all">
+                  {copied ? 'copied to clipboard!' : commandText}
+                </span>
               </div>
             </div>
           </div>

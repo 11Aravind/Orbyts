@@ -1,9 +1,9 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
 
 test.describe('Admin Side Forms Validation & Error Audit', () => {
 
   // Helper function to perform login as admin with credentials
-  async function performAdminLogin(page) {
+  async function performAdminLogin(page: Page) {
     await page.goto('/bite-admin/login', { waitUntil: 'domcontentloaded' });
     const userInput = page.locator('input[type="text"], input[placeholder*="admin"]').first();
     const passInput = page.locator('input[type="password"]').first();

@@ -31,32 +31,34 @@ export default function ProductUniverseSection() {
 
           <ul className="grid grid-cols-1 md:grid-cols-3 gap-8 list-none p-0 m-0">
             {/* 1. Innbite */}
-            <li className="flex w-full flex-col gap-5">
+            <li className="flex w-full">
               <Link
                 href="/products/inbyte"
-                className="aspect-[40/27] overflow-hidden rounded-xl border border-neutral-200 dark:border-white/[0.08] bg-neutral-100 dark:bg-neutral-950/80 hover:border-neutral-300 dark:hover:border-white/20 transition-all relative group flex items-center justify-center block shadow-sm"
+                className="group flex w-full flex-col gap-5 cursor-pointer"
               >
-                <Image
-                  src="/images/orbyes.png"
-                  alt="Innbite QR Food Ordering Preview"
-                  width={600}
-                  height={400}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                />
-              </Link>
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center justify-between">
-                  <Link href="/products/inbyte" className="font-semibold text-neutral-900 dark:text-white text-base hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">
-                    Innbite
-                  </Link>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/10 text-neutral-600 dark:text-neutral-400">
-                    QR Dining
-                  </span>
+                <div className="aspect-[40/27] overflow-hidden rounded-xl border border-neutral-200 dark:border-white/[0.08] bg-neutral-100 dark:bg-neutral-950/80 group-hover:border-neutral-300 dark:group-hover:border-white/20 transition-all relative flex items-center justify-center block shadow-sm">
+                  <Image
+                    src="/images/orbyes.png"
+                    alt="Innbite QR Food Ordering Preview"
+                    width={600}
+                    height={400}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
-                <p className="text-balance text-sm text-neutral-600 dark:text-neutral-400">
-                  Scan QR codes to browse live menus and order food instantly right from your table.
-                </p>
-              </div>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <span className="font-semibold text-neutral-900 dark:text-white text-base group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">
+                      Innbite
+                    </span>
+                    <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/10 text-neutral-600 dark:text-neutral-400">
+                      QR Dining
+                    </span>
+                  </div>
+                  <p className="text-balance text-sm text-neutral-600 dark:text-neutral-400">
+                    Scan QR codes to browse live menus and order food instantly right from your table.
+                  </p>
+                </div>
+              </Link>
             </li>
 
             {/* 2. Orbyt Commerce */}
