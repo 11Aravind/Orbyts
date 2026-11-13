@@ -3,8 +3,8 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, CheckCircle2, ArrowRight, ShieldCheck, Sparkles, ExternalLink } from 'lucide-react';
-import { PRODUCTS, Product } from '../../../data/products';
+import { ArrowLeft, CheckCircle2, ArrowRight, Sparkles, ExternalLink } from 'lucide-react';
+import { PRODUCTS } from '../../../data/products';
 
 export async function generateStaticParams() {
   return PRODUCTS.map((p) => ({

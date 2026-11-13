@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 
 type GaugeMode = 'software' | 'ai' | 'security' | 'development';
 
@@ -40,10 +40,9 @@ const MODES: Record<GaugeMode, ModeConfig> = {
 
 export default function SpeedometerGauge({
   activeMode,
-  onModeChange,
 }: {
   activeMode: GaugeMode;
-  onModeChange: (mode: GaugeMode) => void;
+  onModeChange?: (mode: GaugeMode) => void;
 }) {
   const current = MODES[activeMode];
   const fillPercent = Math.min(100, Math.max(0, 50 + (current.angle / 180) * 100));

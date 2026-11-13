@@ -1,6 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { PRODUCTS } from '../../data/products';
 import ProductCard from '../products/ProductCard';
 

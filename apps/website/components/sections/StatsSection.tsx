@@ -84,10 +84,11 @@ export default function StatsSection() {
       }
     }, 400);
 
+    const frames = animationFrameIds.current;
     return () => {
       observer.disconnect();
       clearTimeout(timer);
-      Object.values(animationFrameIds.current).forEach(cancelAnimationFrame);
+      Object.values(frames).forEach(cancelAnimationFrame);
     };
   }, [runStatsAnimation]);
 

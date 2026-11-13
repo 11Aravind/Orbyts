@@ -67,7 +67,7 @@ export function DateStep({ selected, onSelect }: Props) {
               role="gridcell"
               className={'cal-day' + (isSel ? ' is-selected' : '') + (key === toDateKey(today) ? ' is-today' : '')}
               disabled={!available}
-              aria-pressed={isSel}
+              aria-selected={isSel}
               aria-label={date.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' }) + (available ? '' : ', unavailable')}
               onClick={() => onSelect(key)}
             >

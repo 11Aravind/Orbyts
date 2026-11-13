@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Calendar, CheckCircle2, ArrowRight, ShieldCheck, ChefHat } from 'lucide-react';
+import { Calendar, CheckCircle2, ArrowRight, ShieldCheck } from 'lucide-react';
 
 export default function InByteDemoSection() {
   const [restaurantName, setRestaurantName] = useState('');

@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
-import { Smartphone, MonitorCheck, Receipt, BarChart3, ChefHat, CheckCircle2 } from 'lucide-react';
+import { Smartphone, Receipt, BarChart3, ChefHat, CheckCircle2 } from 'lucide-react';
 
 export default function InByteScreenshots() {
   const [activeTab, setActiveTab] = useState<'customer' | 'kitchen' | 'pos' | 'admin'>('customer');

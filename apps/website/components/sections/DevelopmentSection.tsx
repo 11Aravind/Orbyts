@@ -1,6 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
-import { Globe, Smartphone, Laptop, CreditCard, Sliders, Cpu, ArrowRight } from 'lucide-react';
+import { Globe, Smartphone, Laptop, CreditCard, Sliders, Cpu } from 'lucide-react';
 
 export default function DevelopmentSection() {
   const capabilities = [

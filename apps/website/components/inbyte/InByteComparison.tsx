@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { XCircle, CheckCircle2, Sparkles, AlertTriangle, ArrowRight } from 'lucide-react';
+import { XCircle, CheckCircle2, Sparkles, AlertTriangle } from 'lucide-react';
 
 export default function InByteComparison() {
   const comparisons = [
